@@ -22,3 +22,23 @@ Cems admins will be able to upload a `scoFile` and associate it with a `courseId
 ### `courseId` does not exist
 5. An error will display
 1. GoTo 4
+
+## ToDo
+- CEMS UI
+  - Form for `courseId`, `scoFile`, `updateReason`
+  - Table to list all previously added `scoFile`s
+- CEMS Backend
+  - Endpoints
+    - POST new `scoFile` for `courseId`
+    - DELETE `scoFile` for `courseId`
+    - GET `scoFile` list with page/filter support
+    - GET `scoFile` detail by `courseId`
+  - SCO storage
+    - add ENV var for EFS mount location SCO_BASE_PATH
+    - add EFS for sco files and mount to SCO_BASE_PATH
+    - database table to track zip file location and associate with course_id
+    - repository to store zip in mounted EFS and insert into db table
+- Library to interact with Rustici API
+  - Create `destination` (used once per external LMS)
+  - Upload `scoFile` and set `courseId`
+  - Create dispatch (`courseId`, `destination`)
