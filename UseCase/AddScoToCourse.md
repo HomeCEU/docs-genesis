@@ -36,7 +36,7 @@ Cems admins will be able to upload a `scoFile` and associate it with a `courseId
   - SCO storage
     - add ENV var for EFS mount location SCO_BASE_PATH
     - add EFS for sco files and mount to SCO_BASE_PATH
-    - database table to track zip file location and associate with course_id
+    - database table `scoFiles` with `id`, `location`, `courseId`
     - repository to store zip in mounted EFS and insert into db table
 - Library to interact with Rustici API
   - Upload `scoFile` and set `courseId`
