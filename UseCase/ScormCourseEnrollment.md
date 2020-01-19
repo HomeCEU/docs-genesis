@@ -11,7 +11,7 @@
 - Select course and enroll
 
 ### Manual Assignment
-- manager login
+- Manager login
 - Open manual course assignment
 - Select learner and course
 - Submit
@@ -20,7 +20,8 @@
 - learner matches a curriculum filter
 - system assigns course to learner
 
-### 3rd Party LMS assignment
+### 3rd Party LMS assignment (incomplete)
+do we need to know about assignments before they take the course?
 - ... ????
 
 ## TODO
