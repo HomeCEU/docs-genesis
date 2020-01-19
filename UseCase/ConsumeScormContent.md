@@ -20,3 +20,4 @@ When enrolled into a course with SCORM content a learner will need to consume it
 - CEMS UI
   - For courses which have a sco file provide a link
   - Once clicked load the link in an iframe to encapsulate it as part of CEMS
+  - Ensure no 'take exam' links exist for SCORM courses
