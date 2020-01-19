@@ -39,6 +39,4 @@ Cems admins will be able to upload a `scoFile` and associate it with a `courseId
     - database table to track zip file location and associate with course_id
     - repository to store zip in mounted EFS and insert into db table
 - Library to interact with Rustici API
-  - Create `destination` (used once per external LMS)
   - Upload `scoFile` and set `courseId`
-  - Create dispatch (`courseId`, `destination`)
