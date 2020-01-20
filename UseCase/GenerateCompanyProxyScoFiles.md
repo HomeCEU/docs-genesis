@@ -25,7 +25,8 @@ This action would check every course in the company catalog, and for those which
 - CEMS Backend
   - Endpoints
     - POST endpoint to start the process of generating proxy sco files, should return a 202 and queue a task as it may take a bit of time to complete.
-    - GET endpoint to the details of the last generation request.
+    - GET endpoint to fetch details of the last generation request.
+  - repository and database table to store Rustici destinations
   - Proxy SCO Generation Requests
     - database table for company proxyScoFile generation requests
     - database table to track progress of generation requests (requested, started, complete) with timestamp
