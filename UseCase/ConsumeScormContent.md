@@ -18,6 +18,6 @@ When enrolled into a course with SCORM content a learner will need to consume it
 
 ## TODO
 - CEMS UI
-  - For courses which have a sco file provide a link
-  - Once clicked load the link in an iframe to encapsulate it as part of CEMS
+  - Enrollments - Provide a link to rustici for courses which have a sco file
+  - Once clicked open the link in a new tap just like we do now
   - Ensure no 'take exam' links exist for SCORM courses
