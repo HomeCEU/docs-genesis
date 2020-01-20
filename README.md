@@ -2,7 +2,7 @@
 - [Add SCO to course]
 - [Generate proxy files for company]
 - [External LMS needs course detail and proxy sco files]
-- [SCORM course enrollment] - Incomplete
+- [SCORM course enrollment]
 - [Consume SCORM content]
 - [Record completions]
 - [Download Certificate of Completion (COC)]

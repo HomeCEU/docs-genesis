@@ -20,9 +20,9 @@
 - learner matches a curriculum filter
 - system assigns course to learner
 
-### 3rd Party LMS assignment (incomplete)
-do we need to know about assignments before they take the course?
-- ... ????
+### 3rd Party LMS assignment
+- learner opens the proxy sco file
+- rustici generates a registration for learner
 
 ## TODO
 - Library to interact with Rustici API
