@@ -11,10 +11,10 @@ When a learner completes a course with a passing grade we need to record that in
 1. Learner completes exam with a passing grade
 1. Rustici sends xAPI messages to CEMS-Backend
 1. CEMS-Backend interprets the xAPI messages and records
-  - exam
-    - questionId
-    - questionText
-    - answerId
+    - exam
+      - questionId
+      - questionText
+      - answerId
 1. CEMS-Backend sends completion record to `certMan`
 
 ## ToDo
