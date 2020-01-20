@@ -21,7 +21,7 @@
   - map handlebars placeholders to `DTO` properties
   - convert existing `CT`'s into handlebars notation
   - create library to build a `COC` from a `DTO`
-  - create an restful api `CT` `CRUD`
+  - create an restful api for `CT` `CRUD`
   - create an endpoint to receive the `DTO`
   - create an endpoint to fetch a `COC` by `enrollmentId`
 - CEMS Backend
