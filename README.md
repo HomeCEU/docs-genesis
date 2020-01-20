@@ -14,6 +14,8 @@
   - hide take exam on enrollments page for SCORM courses
   - we will need to modify an endpoint to provide UI with link to rustici and some kind of flag so it knows to hide take exam, maybe isScorm or something? or maybe pass a null examId
   - make examId not required in database?
+- external registration
+  - we don't yet know how the external LMS will request a certificate, we assume when the learner starts the sco rustici generates a registration id.  if it passes that id back to the external LMS then they can use that to request the certificate, else they will have to request it by companyid, learnerid, courseid, date 
 
 
 [Add SCO to course]: UseCase/AddScoToCourse.md
