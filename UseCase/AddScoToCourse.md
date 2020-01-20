@@ -16,7 +16,6 @@ Cems admins will be able to upload a `scoFile` and associate it with a `courseId
 ### `courseId` already has a `scoFile`
 
 6. A notice will appear informing that the sco file will be replaced.
-1. Input an update reason to explain why the file needed to be replaced
 1. Submit
 
 ### `courseId` does not exist
@@ -25,7 +24,7 @@ Cems admins will be able to upload a `scoFile` and associate it with a `courseId
 
 ## ToDo
 - CEMS UI
-  - Form for `courseId`, `scoFile`, `updateReason`
+  - Form for `courseId`, `scoFile`
   - Table to list all previously added `scoFile`s
 - CEMS Backend
   - Endpoints
