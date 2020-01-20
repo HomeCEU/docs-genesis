@@ -6,6 +6,7 @@
 - [Consume SCORM content]
 - [Record completions]
 - [Download Certificate of Completion (COC)]
+- [View Exam Results] - Incomplete
 
 ## Notes
 - Generate proxy files for company
@@ -15,7 +16,9 @@
   - we will need to modify an endpoint to provide UI with link to rustici and some kind of flag so it knows to hide take exam, maybe isScorm or something? or maybe pass a null examId
   - make examId not required in database?
 - external registration
-  - we don't yet know how the external LMS will request a certificate, we assume when the learner starts the sco rustici generates a registration id.  if it passes that id back to the external LMS then they can use that to request the certificate, else they will have to request it by companyid, learnerid, courseid, date 
+  - we don't yet know how the external LMS will request a certificate, we assume when the learner starts the sco rustici generates a registration id.  if it passes that id back to the external LMS then they can use that to request the certificate, else they will have to request it by companyid, learnerid, courseid, date
+
+## Questions
 
 
 [Add SCO to course]: UseCase/AddScoToCourse.md
@@ -25,3 +28,4 @@
 [Consume SCORM content]: UseCase/ConsumeScormContent.md
 [Record completions]: UseCase/RecordCompletion.md
 [Download Certificate of Completion (COC)]: UseCase/DownloadCOC.md
+[View Exam Results]: UseCase/ViewExamResults.md

@@ -1,6 +1,6 @@
-# Record Completion UseCase
+# Record Failed Exam Attempt
 
-When a learner completes a course with a passing grade we need to record that in our system
+When a learner failes the exam in a SCORM course we should record that failed attempt.
 
 ## Actors
 1. learner
@@ -8,7 +8,7 @@ When a learner completes a course with a passing grade we need to record that in
 ## Flow
 1. Learner is [enrolled into a SCORM course]
 1. Learner [consumes SCORM content]
-1. Learner completes exam with a passing grade
+1. Learner completes exam with a failing grade
 1. Rustici sends xAPI messages to CEMS-Backend
 1. CEMS-Backend interprets the xAPI messages and records
     - exam
@@ -16,14 +16,12 @@ When a learner completes a course with a passing grade we need to record that in
       - questionText
       - answerId
       - score
-1. CEMS-Backend sends completion record to `certMan`
 
-## ToDo
+# ToDo
 - CEMS Backend
   - Endpoint to receive xAPI messages from Rustici
   - Library to interpret xAPI messages
     - record exam questions and answers
-  - Send completion records to `certMan`
 
 [enrolled into a SCORM course]: UseCase/ScormCourseEnrollment.md
 [consumes SCORM content]: UseCase/ConsumeScormContent.md

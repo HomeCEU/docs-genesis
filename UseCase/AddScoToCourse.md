@@ -15,7 +15,7 @@ Cems admins will be able to upload a `scoFile` and associate it with a `courseId
 ## Alternate Flows
 ### `courseId` already has a `scoFile`
 
-6. A notice will appear informing that the sco file will be replaced.
+5. An error will display, Rustici does not permit this.
 1. Submit
 
 ### `courseId` does not exist
