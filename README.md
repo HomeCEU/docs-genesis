@@ -6,8 +6,6 @@
 - [SCORM course enrollment]
 - [Consume SCORM content]
 - [Exam completions]
-- [Record Failed Exam Attempt]
-- [View Exam Results] - Incomplete
 - [Download Certificate of Completion (COC)]
 
 ## Task List
