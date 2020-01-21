@@ -1,4 +1,4 @@
-# Course detail and proxy SCO files
+# Get course detail and proxy SCO files
 Given a company using another LMS they will need to be able to access their course catalog though our restful API
 
 This includes
@@ -17,11 +17,3 @@ There are no human actors in this UseCase, it will need to be automated.
 ## Flow
 1. `ELMS` consumes course catalog from `CEMS` API
 1. `ELMS` downloads proxy SCO files from links provided
-
-## ToDo
-- CEMS Backend
-  - Endpoints
-    - GET company catalog
-    - GET course detail (includes link to proxy sco file if one exists)
-    - GET approvals for course by `courseId`
-    - GET proxy SCO file by `companyId` and `courseId`

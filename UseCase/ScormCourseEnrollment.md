@@ -23,12 +23,3 @@
 ### 3rd Party LMS assignment
 - learner opens the proxy sco file
 - rustici generates a registration for learner
-
-## TODO
-- Library to interact with Rustici API
-  - create registration (`enrollmentId`, `learnerId`, `courseId`)
-  - get registration link
-- CEMS Backend
-  - create a location to store Rustici registration links associated with `enrollmentId`'s
-  - create Rustici registration
-  - get and store registration link

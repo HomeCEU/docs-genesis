@@ -1,15 +1,20 @@
 ## Use Cases
 - [Add SCO to course]
 - [Generate proxy files for company]
-- [External LMS needs course detail and proxy sco files]
+- [Get course detail and proxy sco files]
 - [SCORM course enrollment]
 - [Consume SCORM content]
-- [Record completions]
-- [Download Certificate of Completion (COC)]
+- [Exam completions]
+- [Record Failed Exam Attempt]
 - [View Exam Results] - Incomplete
+- [Download Certificate of Completion (COC)]
+
+## Task List
+- [TaskList]
 
 ## Business Rules
 - SCO files can not be updated, a new course will have to be created if there is a change to the sco file (enforced by Rustici)
+- SCO file can not be added to a course which already has enrollments, must create a new course.
 - Course SCO files can not be deleted unless there has never been a course registration/enrollment
 
 ## Notes
@@ -31,9 +36,10 @@
 
 [Add SCO to course]: UseCase/AddScoToCourse.md
 [Generate proxy files for company]: UseCase/GenerateCompanyProxyScoFiles.md
-[External LMS needs course detail and proxy sco files]: UseCase/CourseDetailAndProxyScoFiles.md
+[Get course detail and proxy sco files]: UseCase/CourseDetailAndProxyScoFiles.md
 [SCORM course enrollment]: UseCase/ScormCourseEnrollment.md
 [Consume SCORM content]: UseCase/ConsumeScormContent.md
-[Record completions]: UseCase/RecordCompletion.md
-[Download Certificate of Completion (COC)]: UseCase/DownloadCOC.md
+[Exam completions]: UseCase/RecordCompletion.md
 [View Exam Results]: UseCase/ViewExamResults.md
+[Download Certificate of Completion (COC)]: UseCase/DownloadCOC.md
+[TaskList]: ToDo.md
