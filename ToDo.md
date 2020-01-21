@@ -1,24 +1,25 @@
 # Task list
 
-## Add SCO to course
+## Course Lookup
 - CEMS UI
-  - Form for `courseId`, `scoFile`
-  - Table to list all previously added `scoFile`s
 - CEMS Backend
   - Endpoints
-    - POST new `scoFile` for `courseId`
-    - DELETE `scoFile` for `courseId`
-    - GET `scoFile` list with page/filter support
+    - Course Detail
+      - must include total number of enrollments
+      - must include scormFileName
+## Add SCO to course
+- CEMS UI
+  - Form for `courseId`, `scoFile` [CEMS-1645], [CEMS-1660], [CEMS-1662], [CEMS-1663], [CEMS-1664]
+- CEMS Backend
+  - Endpoints
+    - POST new `scoFile` for `courseId` [CEMS-1641]
     - GET `scoFile` detail by `courseId`
-    - GET enrollments filterable by `courseId` with pagination support
-      - this will be used to know if there are existing enrollments for a course before allowing a sco file to be added to it.
   - SCO storage
-    - add ENV var for EFS mount location SCO_BASE_PATH
-    - add EFS for sco files and mount to SCO_BASE_PATH
-    - database table `scoFiles` with `id`, `location`, `courseId`
-    - repository to store zip in mounted EFS and insert into db table
+    - add EFS for sco files and mount to SCO_BASE_PATH ✔️ [CEMS-1637]
+    - database table `scoFiles` with `id`, `location`, `courseId` ✔️ [CEMS-1638]
+    - repository to store zip in mounted EFS and insert into db table ✔️ [CEMS-1639]
 - Library to interact with Rustici API
-  - Upload `scoFile` and set `courseId`
+  - Upload `scoFile` and set `courseId` [CEMS-1640]
 
 ## Generate Company Proxy Sco Files
 - CEMS UI
@@ -97,3 +98,19 @@
   - library to push completion `DTO`'s to `CertMan`
   - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM)
   - create a migration to transfer past completion data to `CertMan`
+
+## Phase 2
+- CEMS Backend
+  - Extract exam answer text from sco files [CEMS-1651]
+
+[CEMS-1637]: https://homeceu.atlassian.net/browse/CEMS-1637
+[CEMS-1638]: https://homeceu.atlassian.net/browse/CEMS-1638
+[CEMS-1639]: https://homeceu.atlassian.net/browse/CEMS-1639
+[CEMS-1640]: https://homeceu.atlassian.net/browse/CEMS-1640
+[CEMS-1641]: https://homeceu.atlassian.net/browse/CEMS-1641
+[CEMS-1645]: https://homeceu.atlassian.net/browse/CEMS-1645
+[CEMS-1651]: https://homeceu.atlassian.net/browse/CEMS-1651
+[CEMS-1660]: https://homeceu.atlassian.net/browse/CEMS-1660
+[CEMS-1662]: https://homeceu.atlassian.net/browse/CEMS-1662
+[CEMS-1663]: https://homeceu.atlassian.net/browse/CEMS-1663
+[CEMS-1664]: https://homeceu.atlassian.net/browse/CEMS-1664

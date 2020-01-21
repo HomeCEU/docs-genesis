@@ -25,5 +25,17 @@
     - Sco filename
 
 ## Flowchart
-
 [![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggVEQgIFxuICBMKExvZ2luIGFzIENFTVMgQWRtaW4pLS0-XG4gIENMKE9wZW4gQ291cnNlIExvb2t1cCktLT5cbiAgRihGaW5kIGNvdXJzZSBieSBpZCBvciBuYW1lKVxuICBGLS0-Q0QoU2VlIENvdXJzZSBEZXRhaWwpXG4gIEYtLT5Be1ByZWZvcm0gQWN0aW9ufVxuICBBLS0-fEFkZCBTQ098IEFkZFNjbyhBZGQgU0NPIEZpbGUpLS0-UyhTdWJtaXQpXG4gIEEtLT58R2VuZXJhdGUgUHJveHkgRmlsZXN8IFNlbENvKFNlbGVjdCBDb21wYW55KS0tPlNcblxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggVEQgIFxuICBMKExvZ2luIGFzIENFTVMgQWRtaW4pLS0-XG4gIENMKE9wZW4gQ291cnNlIExvb2t1cCktLT5cbiAgRihGaW5kIGNvdXJzZSBieSBpZCBvciBuYW1lKVxuICBGLS0-Q0QoU2VlIENvdXJzZSBEZXRhaWwpXG4gIEYtLT5Be1ByZWZvcm0gQWN0aW9ufVxuICBBLS0-fEFkZCBTQ098IEFkZFNjbyhBZGQgU0NPIEZpbGUpLS0-UyhTdWJtaXQpXG4gIEEtLT58R2VuZXJhdGUgUHJveHkgRmlsZXN8IFNlbENvKFNlbGVjdCBDb21wYW55KS0tPlNcblxuIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifX0)
+
+
+### Flowchart mermade-js source
+```
+    graph TD  
+      L(Login as CEMS Admin)-->
+      CL(Open Course Lookup)-->
+      F(Find course by id or name)
+      F-->CD(See Course Detail)
+      F-->A{Preform Action}
+      A-->|Add SCO| AddSco(Add SCO File)-->S(Submit)
+      A-->|Generate Proxy Files| SelCo(Select Company)-->S
+```
