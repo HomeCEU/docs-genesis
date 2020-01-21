@@ -1,4 +1,5 @@
 ## Use Cases
+- [Course Lookup]
 - [Add SCO to course]
 - [Generate proxy files for company]
 - [Get course detail and proxy sco files]
@@ -34,6 +35,7 @@
   - Transcript
     - How will UI know when to send the user to kohana vs Rustici?
 
+[Course Lookup]: UseCase/CourseLookup.md
 [Add SCO to course]: UseCase/AddScoToCourse.md
 [Generate proxy files for company]: UseCase/GenerateCompanyProxyScoFiles.md
 [Get course detail and proxy sco files]: UseCase/CourseDetailAndProxyScoFiles.md

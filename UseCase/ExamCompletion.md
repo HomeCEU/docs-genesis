@@ -22,5 +22,5 @@ When a learner completes an exam we need to record that in our system
 6. CEMS-Backend sends completion record to `certMan`
 
 
-[enrolled into a SCORM course]: UseCase/ScormCourseEnrollment.md
-[consumes SCORM content]: UseCase/ConsumeScormContent.md
+[enrolled into a SCORM course]: ScormCourseEnrollment.md
+[consumes SCORM content]: ConsumeScormContent.md

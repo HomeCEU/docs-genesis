@@ -10,6 +10,9 @@ This action would check every course in the company catalog, and for those which
 1. cems admin
 
 ## Flow
-1. Login
-1. Open SCO file manager within company requiring proxy files
-1. Click Generate Proxy Files for Company
+1. [Course Lookup]
+1. See "Generate Proxy Files for Company"
+1. select company
+1. click "Generate"
+
+[Course Lookup]: CourseLookup.md
