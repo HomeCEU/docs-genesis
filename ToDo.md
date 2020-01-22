@@ -36,9 +36,10 @@
     - repository method to add a new proxyScoFile generation request
     - repository method to insert a new status for a specific request (insert only, no update)
   - Proxy SCO storage
-    - database table to track proxy zip file location and associate with `companyId`, `courseId`
-    - repository method to store zip in mounted EFS and insert it into db table
-    - library to iterate though all company catalog courses and create proxy SCO's for those not having any yet.
+    - database table to track proxy zip file location and associate with `companyId`, `courseId` [CEMS-1676]
+    - repository method to store zip in mounted EFS and insert it into db table [CEMS-1677]
+        - library to create proxy SCO's . [CEMS-1675]
+    - library to iterate though all company catalog courses and create proxy SCO's for those not having any yet. [CEMS-1678]
 - Library to interact with Rustici API
   - Create `destination` (used once per external LMS)
   - Create dispatch (`courseId`, `destination`)
@@ -114,3 +115,7 @@
 [CEMS-1662]: https://homeceu.atlassian.net/browse/CEMS-1662
 [CEMS-1663]: https://homeceu.atlassian.net/browse/CEMS-1663
 [CEMS-1664]: https://homeceu.atlassian.net/browse/CEMS-1664
+[CEMS-1675]: https://homeceu.atlassian.net/browse/CEMS-1675
+[CEMS-1676]: https://homeceu.atlassian.net/browse/CEMS-1676
+[CEMS-1677]: https://homeceu.atlassian.net/browse/CEMS-1677
+[CEMS-1678]: https://homeceu.atlassian.net/browse/CEMS-1678
