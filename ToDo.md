@@ -7,6 +7,7 @@
     - Course Detail
       - must include total number of enrollments
       - must include scormFileName
+
 ## Add SCO to course
 - CEMS UI
   - Form for `courseId`, `scoFile` [CEMS-1645], [CEMS-1660], [CEMS-1662], [CEMS-1663], [CEMS-1664]
@@ -62,7 +63,7 @@
   - create registration (`enrollmentId`, `learnerId`, `courseId`)
   - get registration link
 
-## Consume SCORM Content UseCase
+## Consume SCORM Content
 - CEMS UI
   - Enrollments - Provide a link to Rustici for courses which have a SCO file
   - Once clicked open the link in a new tap just like we do now
@@ -86,36 +87,49 @@
 
 ## Download Certificate of Completion (`COC`)
 - Certificate Manager (`CertMan`)
-  - define a Completion `DTO` and a way to store them
-  - map handlebars placeholders to `DTO` properties
-  - convert existing certificate template's into handlebars notation
-  - create library to build a `COC` from a `DTO`
-  - create an restful api for certificate template `CRUD`
-  - create an endpoint to receive the `DTO`
-  - create an endpoint to fetch a `COC` by `enrollmentId`
+  - define a Completion `DTO` and a way to store them [CEMS-1569]
+  - map handlebars placeholders to `DTO` properties [CEMS-1622]
+  - convert existing certificate template's into handlebars notation [CEMS-1672]
+  - create library to build a `COC` from a `DTO` [CEMS-1608]
+  - Endpoints
+    - PUT /template/`typeConstant`/`constant` - json(name, author, body) [CEMS-1620]
+    - GET /template/`typeConstant`/`constant` - json(name, author, updatedAt, bodyURI) [CEMS-1618]
+    - GET /template/`typeConstant`/`constant`/body - plain-text(body) [CEMS-1618]
+    - GET /template?filter[type]=`typeConstant` - list of templates filterable by type [CEMS-1680]
+    - PUT /completion/`enrollmentId` - json `DTO`
+    - GET /completion/certificate?enrollmentId=`enrollmentId` - pdf
 - CEMS Backend
-  - create a proxy endpoint in CEMS to fetch a `COC` by `enrollmentId` from `CertMan`
-  - CEMS library to build completion `DTO`'s
+  - CEMS library to build completion `DTO`'s [CEMS-1650]
   - library to push completion `DTO`'s to `CertMan`
   - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM)
   - create a migration to transfer past completion data to `CertMan`
+  - Endpoint
+    - GET /completion/certificate?enrollmentId=`enrollmentId` - proxy endpoint in CEMS to fetch a `COC` pdf from `CertMan`
 
 ## Phase 2
 - CEMS Backend
   - Extract exam answer text from sco files [CEMS-1651]
 
+[CEMS-1569]: https://homeceu.atlassian.net/browse/CEMS-1569
+[CEMS-1608]: https://homeceu.atlassian.net/browse/CEMS-1608
+[CEMS-1618]: https://homeceu.atlassian.net/browse/CEMS-1618
+[CEMS-1620]: https://homeceu.atlassian.net/browse/CEMS-1620
+[CEMS-1622]: https://homeceu.atlassian.net/browse/CEMS-1622
 [CEMS-1637]: https://homeceu.atlassian.net/browse/CEMS-1637
 [CEMS-1638]: https://homeceu.atlassian.net/browse/CEMS-1638
 [CEMS-1639]: https://homeceu.atlassian.net/browse/CEMS-1639
 [CEMS-1640]: https://homeceu.atlassian.net/browse/CEMS-1640
 [CEMS-1641]: https://homeceu.atlassian.net/browse/CEMS-1641
 [CEMS-1645]: https://homeceu.atlassian.net/browse/CEMS-1645
+[CEMS-1650]: https://homeceu.atlassian.net/browse/CEMS-1650
 [CEMS-1651]: https://homeceu.atlassian.net/browse/CEMS-1651
 [CEMS-1660]: https://homeceu.atlassian.net/browse/CEMS-1660
 [CEMS-1662]: https://homeceu.atlassian.net/browse/CEMS-1662
 [CEMS-1663]: https://homeceu.atlassian.net/browse/CEMS-1663
 [CEMS-1664]: https://homeceu.atlassian.net/browse/CEMS-1664
+[CEMS-1672]: https://homeceu.atlassian.net/browse/CEMS-1672
 [CEMS-1675]: https://homeceu.atlassian.net/browse/CEMS-1675
 [CEMS-1676]: https://homeceu.atlassian.net/browse/CEMS-1676
 [CEMS-1677]: https://homeceu.atlassian.net/browse/CEMS-1677
 [CEMS-1678]: https://homeceu.atlassian.net/browse/CEMS-1678
+[CEMS-1680]: https://homeceu.atlassian.net/browse/CEMS-1680
