@@ -87,32 +87,39 @@
 
 ## Download Certificate of Completion (`COC`)
 - Certificate Manager (`CertMan`)
-  - define a Completion `DTO` and a way to store them [CEMS-1569]
-  - map handlebars placeholders to `DTO` properties [CEMS-1622]
-  - convert existing certificate template's into handlebars notation [CEMS-1672]
-  - create library to build a `COC` from a `DTO` [CEMS-1608]
-  - create template type's
-    - certificate
-    - disiplineBrandBlock
-    - image
-  - Endpoints
-    - PUT /template/`typeConstant`/`constant` - json(name, author, body) [CEMS-1620]
-    - GET /template/`typeConstant`/`constant` - json(name, author, updatedAt, bodyURI) [CEMS-1618]
-    - GET /template/`typeConstant`/`constant`/body - plain-text(body) [CEMS-1618]
-    - GET /template?filter[type]=`typeConstant` - list of templates filterable by type [CEMS-1680]
-    - PUT /completion/`enrollmentId` - json `DTO`
-    - GET /completion/certificate?enrollmentId=`enrollmentId` - pdf
+  - Templates
+    - convert existing certificate template's into handlebars notation [CEMS-1672]
+    - map handlebars placeholders to `DTO` properties [CEMS-1622]
+    - create template type's
+      - certificate
+      - disiplineBrandBlock
+      - image
+    - Endpoints
+      - PUT /template/`typeConstant`/`constant` - json(name, author, body) [CEMS-1620]
+      - GET /template/`typeConstant`/`constant` - json(name, author, updatedAt, bodyURI) [CEMS-1618]
+      - GET /template/`typeConstant`/`constant`/body - plain-text(body) [CEMS-1618]
+      - GET /template?filter[type]=`typeConstant` - list of templates filterable by type [CEMS-1680]
+  - Certificate & DataTransferObject `DTO`
+    - define a Completion `DTO` and a way to store them [CEMS-1569]
+    - create library to build a `COC` from a `DTO` [CEMS-1608]
+    - Endpoints
+      - PUT /entity/`entityId` - json
+      - GET /entity/`entityId` - json
+      - GET /render/`entityId`?type=`typeConstant`&template=`constant`&format=pdf|html
 - CEMS Backend
-  - CEMS library to build completion `DTO`'s [CEMS-1650]
-  - library to push completion `DTO`'s to `CertMan`
-  - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM)
-  - create a migration to transfer past completion data to `CertMan`
+  - DataTransferObject `DTO`
+    - CEMS library to build completion `DTO`'s [CEMS-1650]
+    - library to push completion `DTO`'s to `CertMan`
+    - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM)
+  - Data Migration
+    - create a migration to transfer past completion data to `CertMan`
   - Endpoint
     - GET /completion/certificate?enrollmentId=`enrollmentId` - proxy endpoint in CEMS to fetch a `COC` pdf from `CertMan`
 
 ## Phase 2
 - CEMS Backend
   - Extract exam answer text from sco files [CEMS-1651]
+- WYSIWYG template builder
 
 [CEMS-1569]: https://homeceu.atlassian.net/browse/CEMS-1569
 [CEMS-1608]: https://homeceu.atlassian.net/browse/CEMS-1608
