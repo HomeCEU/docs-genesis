@@ -91,6 +91,10 @@
   - map handlebars placeholders to `DTO` properties [CEMS-1622]
   - convert existing certificate template's into handlebars notation [CEMS-1672]
   - create library to build a `COC` from a `DTO` [CEMS-1608]
+  - create template type's
+    - courseCompletionCertificate
+    - disiplineBrandBlock
+    - image
   - Endpoints
     - PUT /template/`typeConstant`/`constant` - json(name, author, body) [CEMS-1620]
     - GET /template/`typeConstant`/`constant` - json(name, author, updatedAt, bodyURI) [CEMS-1618]
