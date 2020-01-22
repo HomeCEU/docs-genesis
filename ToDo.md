@@ -92,7 +92,7 @@
   - convert existing certificate template's into handlebars notation [CEMS-1672]
   - create library to build a `COC` from a `DTO` [CEMS-1608]
   - create template type's
-    - courseCompletionCertificate
+    - certificate
     - disiplineBrandBlock
     - image
   - Endpoints
