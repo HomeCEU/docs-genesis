@@ -25,6 +25,8 @@
     - add EFS for sco files and mount to SCO_BASE_PATH ✔️ [CEMS-1637]
     - database table `scoFiles` with `id`, `location`, `courseId` ✔️ [CEMS-1638]
     - repository to store zip in mounted EFS and insert into db table ✔️ [CEMS-1639]
+      - create empty inactive exam for course because course can not be activiated without it
+        - use 'SCORM' as name
 - Library to interact with Rustici API
   - Upload `scoFile` and set `courseId` [CEMS-1640]
 
