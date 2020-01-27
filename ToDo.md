@@ -8,6 +8,33 @@
     - Add Sco file for course
     - Duplicate course so we can add sco files
       - maintain some reference back to original course so that we can replace courses in the company catalog in the future, not in this task
+      - fields to copy
+        - name
+        - description
+        - boc instructional level
+        - instructional level
+        - clinical topics
+        - is_active
+        - course_format
+        - hours
+        - outlinie
+        - summary
+        - goals
+        - preview_name
+        - preview_link
+        - preview_type
+        - author_summary
+        - displines
+        - categories
+        - authors
+        - asha_code
+        - all accredidations
+        - owner
+        - mail_price
+        - online_price
+        - royalty_owner
+        - notes
+        - materials
 - CEMS Backend
   - Endpoints
     - Course Detail
