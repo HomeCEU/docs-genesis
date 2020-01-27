@@ -75,10 +75,10 @@
 [Course Lookup]: UseCase/CourseLookup.md
 [Add SCO to course]: UseCase/AddScoToCourse.md
 [Generate proxy files for company]: UseCase/GenerateCompanyProxyScoFiles.md
-[Get course detail and proxy sco files]: UseCase/CourseDetailAndProxyScoFiles.md
+[Get course detail and proxy sco files]: UseCase/GetCourseDetailAndProxyScoFiles.md
 [SCORM course enrollment]: UseCase/ScormCourseEnrollment.md
 [Consume SCORM content]: UseCase/ConsumeScormContent.md
-[Exam completions]: UseCase/RecordCompletion.md
+[Exam completions]: UseCase/ExamCompletion.md
 [View Exam Results]: UseCase/ViewExamResults.md
 [Download Certificate of Completion (COC)]: UseCase/DownloadCOC.md
 [TaskList]: ToDo.md
