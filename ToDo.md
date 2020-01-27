@@ -2,6 +2,12 @@
 
 ## Course Lookup
 - CEMS UI
+  - User Interface to lookup courses (auto filter by video only!)
+  - Actions
+    - Generate Proxy files for company
+    - Add Sco file for course
+    - Duplicate course so we can add sco files
+      - maintain some reference back to original course so that we can replace courses in the company catalog in the future, not in this task
 - CEMS Backend
   - Endpoints
     - Course Detail
