@@ -1,15 +1,54 @@
-## Use Cases
+## Phase 1 Use Cases
 - [Course Lookup]
+- [Copy Course]
 - [Add SCO to course]
 - [Generate proxy files for company]
 - [Get course detail and proxy sco files]
-- [SCORM course enrollment]
 - [Consume SCORM content]
 - [Exam completions]
 - [Download Certificate of Completion (COC)]
 
+## Phase 2 Use Cases
+- [SCORM course enrollment]
+
 ## Task List
 - [TaskList]
+
+## NOT required for genesis
+- CEMS users do not need sco file support
+  - no UI updates required
+  - create script to roll out new sco courses per company (replace in company catalog)
+
+## Additional Tasks
+- a way to create a new course from existing course with back reference to original course ID
+  - this is used to create new SCORM courses from existing courses
+  - copies
+    - name
+    - description
+    - boc instructional level
+    - instructional level
+    - clinical topics
+    - is_active
+    - course_format
+    - hours
+    - outlinie
+    - summary
+    - goals
+    - preview_name
+    - preview_link
+    - preview_type
+    - author_summary
+    - displines
+    - categories
+    - authors
+    - asha_code
+    - all accredidations
+    - owner
+    - mail_price
+    - online_price
+    - royalty_owner
+    - notes
+    - materials
 
 ## Business Rules
 - SCO files can not be updated, a new course will have to be created if there is a change to the sco file (enforced by Rustici)
