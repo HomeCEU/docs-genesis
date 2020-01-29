@@ -138,9 +138,9 @@
     - define a Completion `DTO` and a way to store them [CEMS-1569]
     - create library to build a `COC` from a `DTO` [CEMS-1608]
     - Endpoints
-      - PUT /entity/`entityId` - json
-      - GET /entity/`entityId` - json
-      - GET /render/`entityId`?type=`typeConstant`&template=`constant`&format=pdf|html
+      - PUT /entity/`entityId` - json [CEMS-1686]
+      - GET /entity/`entityId` - json [CEMS-1687]
+      - GET /render/`entityId`?type=`typeConstant`&template=`constant`&format=pdf|html [CEMS-1688]
 - CEMS Backend
   - DataTransferObject `DTO`
     - CEMS library to build completion `DTO`'s [CEMS-1650]
@@ -179,3 +179,6 @@
 [CEMS-1677]: https://homeceu.atlassian.net/browse/CEMS-1677
 [CEMS-1678]: https://homeceu.atlassian.net/browse/CEMS-1678
 [CEMS-1680]: https://homeceu.atlassian.net/browse/CEMS-1680
+[CEMS-1686]: https://homeceu.atlassian.net/browse/CEMS-1686
+[CEMS-1687]: https://homeceu.atlassian.net/browse/CEMS-1687
+[CEMS-1688]: https://homeceu.atlassian.net/browse/CEMS-1688
