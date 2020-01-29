@@ -144,12 +144,12 @@
 - CEMS Backend
   - DataTransferObject `DTO`
     - CEMS library to build completion `DTO`'s [CEMS-1650]
-    - library to push completion `DTO`'s to `CertMan`
-    - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM)
+    - library to push completion `DTO`'s to `CertMan` [CEMS-1689]
+    - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM) [CEMS-1690]
   - Data Migration
-    - create a migration to transfer past completion data to `CertMan`
+    - create a migration to transfer past completion data to `CertMan` [CEMS-1691]
   - Endpoint
-    - GET /completion/certificate?enrollmentId=`enrollmentId` - proxy endpoint in CEMS to fetch a `COC` pdf from `CertMan`
+    - GET /completion/certificate?enrollmentId=`enrollmentId` - proxy endpoint in CEMS to fetch a `COC` pdf from `CertMan` [CEMS-1692]
 
 ## Phase 2
 - CEMS Backend
@@ -182,3 +182,7 @@
 [CEMS-1686]: https://homeceu.atlassian.net/browse/CEMS-1686
 [CEMS-1687]: https://homeceu.atlassian.net/browse/CEMS-1687
 [CEMS-1688]: https://homeceu.atlassian.net/browse/CEMS-1688
+[CEMS-1689]: https://homeceu.atlassian.net/browse/CEMS-1689
+[CEMS-1690]: https://homeceu.atlassian.net/browse/CEMS-1690
+[CEMS-1691]: https://homeceu.atlassian.net/browse/CEMS-1691
+[CEMS-1692]: https://homeceu.atlassian.net/browse/CEMS-1692
