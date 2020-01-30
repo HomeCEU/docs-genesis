@@ -34,7 +34,6 @@
         - online_price
         - royalty_owner
         - notes
-        - materials
 - CEMS Backend
   - Endpoints
     - Course Detail
