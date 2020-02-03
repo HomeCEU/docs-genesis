@@ -6,39 +6,41 @@
   - Actions
     - Generate Proxy files for company
     - Add Sco file for course
-    - Duplicate course so we can add sco files
-      - maintain some reference back to original course so that we can replace courses in the company catalog in the future, not in this task
-      - fields to copy
-        - name
-        - description
-        - boc instructional level
-        - instructional level
-        - clinical topics
-        - is_active
-        - course_format
-        - hours
-        - outlinie
-        - summary
-        - goals
-        - preview_name
-        - preview_link
-        - preview_type
-        - author_summary
-        - displines
-        - categories
-        - authors
-        - asha_code
-        - all accredidations
-        - owner
-        - mail_price
-        - online_price
-        - royalty_owner
-        - notes
+    - Duplicate course so we can add sco files [CEMS-1698]
 - CEMS Backend
   - Endpoints
     - Course Detail
       - must include total number of enrollments
       - must include scormFileName
+      - POST /course/{courseId}/duplicate [CEMS-1697]
+  - Duplicate course so we can add sco files [CEMS-1696]
+    - maintain some reference back to original course so that we can replace courses in the company catalog in the future, not in this task
+    - fields to copy
+      - name
+      - description
+      - boc instructional level
+      - instructional level
+      - clinical topics
+      - is_active
+      - course_format
+      - hours
+      - outlinie
+      - summary
+      - goals
+      - preview_name
+      - preview_link
+      - preview_type
+      - author_summary
+      - displines
+      - categories
+      - authors
+      - asha_code
+      - all accredidations
+      - owner
+      - mail_price
+      - online_price
+      - royalty_owner
+      - notes
 
 ## Add SCO to course
 - CEMS UI
@@ -53,6 +55,11 @@
     - repository to store zip in mounted EFS and insert into db table ✔️ [CEMS-1639]
       - create empty inactive exam for course because course can not be activiated without it
         - use 'SCORM' as name
+  - Buil import sco files [CEMS-1699]
+    - Given a bunch of zip files named {courseId}.zip
+    - For each zip file
+      - duplicate courseId
+      - add sco to new course (local + rustici)
 - Library to interact with Rustici API
   - Upload `scoFile` and set `courseId` [CEMS-1640]
 
@@ -105,7 +112,8 @@
 - CEMS Backend
   - Endpoints
     - Enrollment Detail - /enrollment/`enrollmentId`
-      - userId, companyId, learnerId, courseId, scormLink
+      - userId, companyId, learnerId, courseId, courseName, scormLink
+      - certificate link (if completed)
       - this is needed so the UI knows where the rustici registration is and if it should hide the take exam option.
 
 ## Exam Completion
@@ -150,6 +158,7 @@
   - Endpoint
     - GET /completion/certificate?enrollmentId=`enrollmentId` - proxy endpoint in CEMS to fetch a `COC` pdf from `CertMan` [CEMS-1692]
 
+
 ## Phase 2
 - CEMS Backend
   - Extract exam answer text from sco files [CEMS-1651]
@@ -185,3 +194,7 @@
 [CEMS-1690]: https://homeceu.atlassian.net/browse/CEMS-1690
 [CEMS-1691]: https://homeceu.atlassian.net/browse/CEMS-1691
 [CEMS-1692]: https://homeceu.atlassian.net/browse/CEMS-1692
+[CEMS-1696]: https://homeceu.atlassian.net/browse/CEMS-1696
+[CEMS-1697]: https://homeceu.atlassian.net/browse/CEMS-1697
+[CEMS-1698]: https://homeceu.atlassian.net/browse/CEMS-1698
+[CEMS-1699]: https://homeceu.atlassian.net/browse/CEMS-1699
