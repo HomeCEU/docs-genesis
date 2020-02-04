@@ -51,7 +51,7 @@
     - add EFS for sco files and mount to SCO_BASE_PATH ✔️ [CEMS-1637]
     - database table `scoFiles` with `id`, `location`, `courseId` ✔️ [CEMS-1638]
     - repository to store zip in mounted EFS and insert into db table ✔️ [CEMS-1639]
-  - create empty inactive exam for course because course can not be activiated without it **Carlos**
+  - create empty inactive exam for course because course can not be activiated without it [CEMS-1705]
     - use 'SCORM' as name
   - Buil import sco files [CEMS-1699]
     - Given a bunch of zip files named {courseId}.zip
@@ -68,19 +68,19 @@
   - Endpoints
     - POST endpoint to start the process of generating proxy sco files, should return a 202 and queue a task as it may take a bit of time to complete. [CEMS-1700]
     - GET endpoint to fetch details of the last generation request. **Phase2+**
-  - repository and database table to store Rustici destinations **Carlos**
-  - Proxy SCO Generation Requests **Carlos**
-    - database table for company proxyScoFile generation requests
-    - database table to track progress of generation requests (requested, started, complete) with timestamp
-    - repository method to add a new proxyScoFile generation request
-    - repository method to insert a new status for a specific request (insert only, no update)
+  - ~~repository and database table to store Rustici destinations~~
+  - Proxy SCO Generation Requests
+    - database table for company proxyScoFile generation requests [CEMS-1706]
+    - database table to track progress of generation requests (requested, started, complete) with timestamp [CEMS-1707]
+    - repository method to add a new proxyScoFile generation request [CEMS-1708]
+    - repository method to insert a new status for a specific request (insert only, no update) [CEMS-1709]
   - Proxy SCO storage
     - database table to track proxy zip file location and associate with `companyId`, `courseId` ✔️  [CEMS-1676]
     - repository method to store zip in mounted EFS and insert it into db table ✔️  [CEMS-1677]
         - library to create proxy SCO's. ✔️ [CEMS-1675]
     - library to iterate though all company catalog courses and create proxy SCO's for those not having any yet. [CEMS-1678]
-- Library to interact with Rustici API **Carlos**
-  - Create `destination` (used once per external LMS)
+- Library to interact with Rustici API [CEMS-1675]
+  - ~~Create `destination` (used once per external LMS)~~
   - Create dispatch (`courseId`, `destination`)
   - Download proxyScoFile
 
@@ -96,13 +96,13 @@
       - GET​/accreditations?filter[courseId]={courseId}
 
 ## SCORM Course Enrollment
-- CEMS Backend **Carlos**
-  - create a location to store Rustici registration links associated with `enrollmentId`'s
-  - create Rustici registration
-  - get and store registration link
+- CEMS Backend
+  - create a location to store Rustici registration links associated with `enrollmentId`'s [CEMS-1710]
+  - create Rustici registration [CEMS-1711]
+  - get and store registration link [CEMS-1712]
 - Library to interact with Rustici API **Carlos**
-  - create registration (`enrollmentId`, `learnerId`, `courseId`)
-  - get registration link
+  - create registration (`enrollmentId`, `learnerId`, `courseId`) [[CEMS-1713]
+  - get registration link [CEMS-1714]
 
 ## Consume SCORM Content
 - CEMS UI  **Phase2**
@@ -121,9 +121,9 @@
 
 ## Exam Completion
 - CEMS Backend **Carlos**
-  - Endpoint to receive xAPI messages from Rustici
-  - Library to interpret xAPI messages
-    - record exam questions and answers
+  - Endpoint to receive xAPI messages from Rustici [CEMS-1715]
+  - Library to interpret xAPI messages [CEMS-1716]
+    - record exam questions and answers [CEMS-1717]
 
 ## View Exam Results
 - CEMS UI
@@ -206,3 +206,16 @@
 [CEMS-1701]: https://homeceu.atlassian.net/browse/CEMS-1701
 [CEMS-1703]: https://homeceu.atlassian.net/browse/CEMS-1703
 [CEMS-1704]: https://homeceu.atlassian.net/browse/CEMS-1704
+[CEMS-1705]: https://homeceu.atlassian.net/browse/CEMS-1705
+[CEMS-1706]: https://homeceu.atlassian.net/browse/CEMS-1706
+[CEMS-1707]: https://homeceu.atlassian.net/browse/CEMS-1707
+[CEMS-1708]: https://homeceu.atlassian.net/browse/CEMS-1708
+[CEMS-1709]: https://homeceu.atlassian.net/browse/CEMS-1709
+[CEMS-1710]: https://homeceu.atlassian.net/browse/CEMS-1710
+[CEMS-1711]: https://homeceu.atlassian.net/browse/CEMS-1711
+[CEMS-1712]: https://homeceu.atlassian.net/browse/CEMS-1712
+[CEMS-1713]: https://homeceu.atlassian.net/browse/CEMS-1713
+[CEMS-1714]: https://homeceu.atlassian.net/browse/CEMS-1714
+[CEMS-1715]: https://homeceu.atlassian.net/browse/CEMS-1715
+[CEMS-1716]: https://homeceu.atlassian.net/browse/CEMS-1716
+[CEMS-1717]: https://homeceu.atlassian.net/browse/CEMS-1717
