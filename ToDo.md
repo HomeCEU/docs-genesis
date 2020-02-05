@@ -130,11 +130,71 @@
   - Transcript **Phase2**
     - for scorm courses we need the "view exam" link to point to the Rustici registration which will re-launch the scorm content and they should be able to see their exam
 
+# Certificates
+## TemplateManager
+- Templates
+  - db table `template`
+    - columns
+      - templateId   - uuid
+      - templateType - used to filter templates by a type/category
+      - templateKey  - user provided key
+      - author       - user provided string for author name
+      - createdAt    - UTC datetime
+      - body         - MEDIUMTEXT
+    - index
+      - PK (templateId)
+      - index (templateType, templateKey)
+- Entities
+  - db table `entity`
+    - columns
+      - entityId   - uuid
+      - entityType - used as a category 
+      - entityKey  - unique
+      - createdAt  - UTC datetime
+      - data       - json data structure
+    - index
+      - PK (entityId)
+      - index (entityType, entityKey)
+  - Endpoints
+    - post entity
+    - get entity version history
+- Render
+  - db table `renderLog`
+    - columns
+      - requestId  - int
+      - request    - json request params
+      - templateId - uuid
+      - entityId   - uuid
+      - createdAt  - UTC datetime
+      - format     - pdf/html
+    - index
+      - PK (requestId)
+      - FK entityId
+      - FK tempkateId
+  - Endpoints
+    - render by template type/key, entity type/key
+## CEMS - Download Certificate of Completion (CoC)
+  - Lib
+    - CertMan
+      - hasCompletionData(eid)
+        - count(entity version history) > 0
+      - recordCompletion(eid, completionDTO)
+      - buildCertificate(template, eid)
+    - CompletionDto
+      - buildFromEnrollment(eid)
+  - Endpoint
+    - GET /enrollment/{eid}/certificate
+      - certMan::hasCompletion(eid)
+        - else
+          - dto=CompletionDto::buildFromEnrollment(eid)
+          - certMan::recordCompletion(eid, dto)
+      - certMan::render(templateKey, eid)
+
 ## Download Certificate of Completion (`COC`)
 - Certificate Manager (`CertMan`)
   - Templates
     - convert existing certificate template's into handlebars notation [CEMS-1672]
-    - map handlebars placeholders to `DTO` properties [CEMS-1622]
+    - map handlebars placeholders to `DTO` properties ✔️  [CEMS-1622]
     - create template type's
       - certificate
       - disiplineBrandBlock
