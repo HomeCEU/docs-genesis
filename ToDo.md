@@ -132,8 +132,8 @@
 
 # Certificates
 ## TemplateManager
-- Templates
-  - db table `template`
+- Database
+  - table `template`
     - columns
       - templateId   - uuid
       - templateType - used to filter templates by a type/category
@@ -144,8 +144,7 @@
     - index
       - PK (templateId)
       - index (templateType, templateKey)
-- Entities
-  - db table `entity`
+  - table `entity`
     - columns
       - entityId   - uuid
       - entityType - used as a category 
@@ -155,11 +154,7 @@
     - index
       - PK (entityId)
       - index (entityType, entityKey)
-  - Endpoints
-    - post entity
-    - get entity version history
-- Render
-  - db table `renderLog`
+  - table `renderLog`
     - columns
       - requestId  - int
       - request    - json request params
@@ -171,8 +166,50 @@
       - PK (requestId)
       - FK entityId
       - FK tempkateId
-  - Endpoints
-    - render by template type/key, entity type/key
+- Lib
+  - Entity
+    - entityId
+    - entityType
+    - entityKey
+    - data
+    - createdAt
+  - EntityRepository
+    - save(type, key, Entity)    void
+    - find(type, key)            array of {entityId, entityType, entityKey, createdAt}
+  - Document
+    - pdf(templateId, entityId)  string filePath
+
+- Endpoints
+  - POST /entity
+    - Request JSON
+      - entityType    string
+      - entityKey     string
+      - data          object
+    - Response JSON
+      - entityId      uuid
+      - entityType    string
+      - entityKey     string
+      - createdAt     ISO 8601 date-time
+  - GET  /entity/{entityType}/{entityKey}/history
+    - Respose JSON
+      - total         int
+      - items (array of)
+        - entityId    uuid
+        - entityType  string
+        - entityKey   string
+        - createdAt   ISO 8601 date-time
+  - GET  /render
+    - Request Query
+      - templateId    uuid
+      - templateType  string
+      - templateKey   string
+      - entityId      uuid
+      - entityType    string
+      - entityKey     string
+    - Response
+      - entityId.pdf  application/pdf
+
+
 ## CEMS - Download Certificate of Completion (CoC)
   - Lib
     - CertMan
