@@ -136,82 +136,82 @@
   - table `template`
     - columns
       - templateId   - uuid
-      - templateType - used to filter templates by a type/category
+      - docType      - used to filter templates by a type/category
       - templateKey  - user provided key
       - author       - user provided string for author name
       - createdAt    - UTC datetime
       - body         - MEDIUMTEXT
     - index
       - PK (templateId)
-      - index (templateType, templateKey)
-  - table `entity`
+      - index (docType, templateKey)
+  - table `docdata`
     - columns
-      - entityId   - uuid
-      - entityType - used as a category 
-      - entityKey  - unique
+      - dataId   - uuid
+      - docType - used as a category 
+      - dataKey  - unique
       - createdAt  - UTC datetime
       - data       - json data structure
     - index
-      - PK (entityId)
-      - index (entityType, entityKey)
+      - PK (dataId)
+      - index (docType, dataKey)
   - table `renderLog`
     - columns
       - requestId  - int
       - request    - json request params
       - templateId - uuid
-      - entityId   - uuid
+      - dataId   - uuid
       - createdAt  - UTC datetime
       - format     - pdf/html
     - index
       - PK (requestId)
-      - FK entityId
+      - FK dataId
       - FK tempkateId
 - Lib
-  - Entity
-    - entityId
-    - entityType
-    - entityKey
+  - DocData
+    - dataId
+    - docType
+    - dataKey
     - data
     - createdAt
-  - EntityRepository
-    - save(type, key, Entity)    void
-    - find(type, key)            array of {entityId, entityType, entityKey, createdAt}
+  - DocDataRepository
+    - save(type, key, DocData)    void
+    - find(type, key)            array of {dataId, docType, dataKey, createdAt}
   - Document
-    - construct(templateId, entityId)
+    - construct(templateId, dataId)
     - asPdf()                    string filePath
   - Certificate & DataTransferObject `DTO`
     - define a Completion `DTO` and a way to store them ✔️  [CEMS-1569]
     - create library to build a `COC` from a `DTO` ✔️  [CEMS-1608]
 
 - Endpoints
-  - POST /entity [CEMS-1686]
+  - POST /docdata [CEMS-1686]
     - Request JSON
-      - entityType    string
-      - entityKey     string
+      - docType    string
+      - dataKey     string
       - data          object
     - Response JSON
-      - entityId      uuid
-      - entityType    string
-      - entityKey     string
+      - dataId      uuid
+      - docType    string
+      - dataKey     string
       - createdAt     ISO 8601 date-time
-  - GET  /entity/{entityType}/{entityKey}/history [CEMS-1687]
+  - GET  /docdata/{docType}/{dataKey}/history [CEMS-1687]
     - Respose JSON
       - total         int
       - items (array of)
-        - entityId    uuid
-        - entityType  string
-        - entityKey   string
+        - dataId    uuid
+        - docType  string
+        - dataKey   string
         - createdAt   ISO 8601 date-time
   - GET  /render [CEMS-1688] w8
     - Request Query
       - templateId    uuid
-      - templateType  string
+      - docType  string
       - templateKey   string
-      - entityId      uuid
-      - entityType    string
-      - entityKey     string
+      - dataId      uuid
+      - docType    string
+      - dataKey     string
     - Response
-      - entityId.pdf  application/pdf
+      - dataId.pdf  application/pdf
 - Misc
   - map handlebars placeholders to `DTO` properties ✔️  [CEMS-1622]
   - convert existing certificate template's into handlebars notation [CEMS-1672], [CEMS-1681] w6
@@ -219,30 +219,30 @@
 ## CEMS - Download Certificate of Completion (CoC)
 
   - Lib
-    - CertMan
+    - DocumentTemplateSystem (DTS)
       - hasCompletionData(enrollmentId)
-        - count(entity version history) > 0
-          - GET certMan/entity/type/key/history
+        - count(docData version history) > 0
+          - GET DTS/docdata/type/key/history
       - recordCompletion(enrollmentId, completionDTO) [CEMS-1689] w7
-        - POST certMan/entity
+        - POST DTS/docdata
       - buildCertificate(template, enrollmentId)
-        - GET  certMan/render
+        - GET  DTS/render
     - CompletionDto
       - buildFromEnrollment(eid) [CEMS-1650] w6
   - Endpoint
     - GET /enrollment/{enrollmentId}/certificate [CEMS-1692] w9
-      - certMan::hasCompletion(enrollmentId)
+      - DTS::hasCompletion(enrollmentId)
         - else
           - dto=CompletionDto::buildFromEnrollment(enrollmentId)
-          - certMan::recordCompletion(enrollmentId, dto)
-      - certMan::render(templateKey, enrollmentId)
+          - DTS::recordCompletion(enrollmentId, dto)
+      - DTS::render(templateKey, enrollmentId)
 
 
 ## Phase 2
 - CEMS Backend
   - Extract exam answer text from sco files [CEMS-1651]
   - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM) [CEMS-1690] **phase2**
-  - create a migration to transfer past completion data to `CertMan` [CEMS-1691] **phase2**
+  - create a migration to transfer past completion data to `DTS` [CEMS-1691] **phase2**
 
 - WYSIWYG template builder
 
