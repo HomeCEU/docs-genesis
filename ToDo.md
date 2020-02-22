@@ -133,7 +133,7 @@
 # Certificates
 ## TemplateManager
 - Database
-  - table `template`
+  - table `template` ✔️ 
     - columns
       - templateId   - uuid
       - docType      - used to filter templates by a type/category
@@ -144,7 +144,7 @@
     - index
       - PK (templateId)
       - index (docType, templateKey)
-  - table `docdata`
+  - table `docdata` ✔️ 
     - columns
       - dataId   - uuid
       - docType - used as a category 
@@ -154,7 +154,7 @@
     - index
       - PK (dataId)
       - index (docType, dataKey)
-  - table `renderLog`
+  - table `renderLog` ✔️ 
     - columns
       - requestId  - int
       - request    - json request params
@@ -167,13 +167,13 @@
       - FK dataId
       - FK tempkateId
 - Lib
-  - DocData
+  - DocData ✔️ 
     - dataId
     - docType
     - dataKey
     - data
     - createdAt
-  - DocDataRepository
+  - DocDataRepository ✔️ 
     - save(type, key, DocData)    void
     - find(type, key)            array of {dataId, docType, dataKey, createdAt}
   - Document
@@ -184,7 +184,7 @@
     - create library to build a `COC` from a `DTO` ✔️  [CEMS-1608]
 
 - Endpoints
-  - POST /docdata [CEMS-1686]
+  - POST /docdata [CEMS-1686] ✔️ 
     - Request JSON
       - docType    string
       - dataKey     string
@@ -194,7 +194,7 @@
       - docType    string
       - dataKey     string
       - createdAt     ISO 8601 date-time
-  - GET  /docdata/{docType}/{dataKey}/history [CEMS-1687]
+  - GET  /docdata/{docType}/{dataKey}/history [CEMS-1687] ✔️ 
     - Respose JSON
       - total         int
       - items (array of)
@@ -202,7 +202,7 @@
         - docType  string
         - dataKey   string
         - createdAt   ISO 8601 date-time
-  - GET  /render [CEMS-1688] w8
+  - GET  /render [CEMS-1688] w8 ✔️ 
     - Request Query
       - templateId    uuid
       - docType  string
