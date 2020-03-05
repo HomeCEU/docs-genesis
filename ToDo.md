@@ -6,12 +6,12 @@
   - Actions
     - Generate Proxy files for company **hector**
     - Add Sco file for course **hector**
-    - Duplicate course so we can add sco files [CEMS-1698]
-- CEMS Backend
+    - Duplicate course so we can add sco files ✔️ [CEMS-1698]
+- CEMS Backend ✔️
   - Endpoints
-    - GET ​/company​/{companyId}​/course​/{courseId} [CEMS-1671]
-    - POST /course/{courseId}/duplicate [CEMS-1697]
-  - Duplicate course so we can add sco files [CEMS-1696]
+    - GET ​/company​/{companyId}​/course​/{courseId} ✔️ [CEMS-1671]
+    - POST /course/{courseId}/duplicate ✔️ [CEMS-1697]
+  - Duplicate course so we can add sco files ✔️ [CEMS-1696]
     - maintain some reference back to original course so that we can replace courses in the company catalog in the future, not in this task
     - fields to copy
       - name
@@ -44,95 +44,75 @@
 - CEMS UI
   - Course Lookup
     - display current sco detail or provide action to upload file. **hector**
-- CEMS Backend
-  - Endpoints
+- CEMS Backend ✔️
+  - Endpoints ✔️
     - POST new `scoFile` for `courseId` ✔️ [CEMS-1641]
-  - SCO storage
+  - SCO storage ✔️
     - add EFS for sco files and mount to SCO_BASE_PATH ✔️ [CEMS-1637]
     - database table `scoFiles` with `id`, `location`, `courseId` ✔️ [CEMS-1638]
     - repository to store zip in mounted EFS and insert into db table ✔️ [CEMS-1639]
-  - create empty inactive exam for course because course can not be activiated without it [CEMS-1705]
+  - create empty inactive exam for course because course can not be activiated without it ✔️ [CEMS-1696]
     - use 'SCORM' as name
-  - Buil import sco files [CEMS-1699]
+  - Buil import sco files ✔️ [CEMS-1699]
     - Given a bunch of zip files named {courseId}.zip
     - For each zip file
       - duplicate courseId
       - add sco to new course (local + rustici)
-- Library to interact with Rustici API
+- Library to interact with Rustici API ✔️
   - Upload `scoFile` and set `courseId` ✔️ [CEMS-1640]
 
 ## Generate Company Proxy Sco Files
 - CEMS UI
   - Add Generate button to CourseLookup **hector**
-- CEMS Backend
-  - Endpoints
-    - POST endpoint to start the process of generating proxy sco files, should return a 202 and queue a task as it may take a bit of time to complete. [CEMS-1700]
-    - GET endpoint to fetch details of the last generation request. **Phase2+**
+- CEMS Backend ✔️
+  - Endpoints ✔️
+    - POST endpoint to start the process of generating proxy sco files, should return a 202 and queue a task as it may take a bit of time to complete. ✔️ [CEMS-1700]
+
   - ~~repository and database table to store Rustici destinations~~
-  - Proxy SCO Generation Requests
-    - database table for company proxyScoFile generation requests [CEMS-1706]
-    - database table to track progress of generation requests (requested, started, complete) with timestamp [CEMS-1707]
-    - repository method to add a new proxyScoFile generation request [CEMS-1708]
-    - repository method to insert a new status for a specific request (insert only, no update) [CEMS-1709]
-  - Proxy SCO storage
+
+  - Proxy SCO storage ✔️
     - database table to track proxy zip file location and associate with `companyId`, `courseId` ✔️  [CEMS-1676]
     - repository method to store zip in mounted EFS and insert it into db table ✔️  [CEMS-1677]
         - library to create proxy SCO's. ✔️ [CEMS-1675]
-    - library to iterate though all company catalog courses and create proxy SCO's for those not having any yet. [CEMS-1678]
-- Library to interact with Rustici API [CEMS-1675]
+    - library to iterate though all company catalog courses and create proxy SCO's for those not having any yet. ✔️ [CEMS-1678]
+- Library to interact with Rustici API ✔️ [CEMS-1675]
   - ~~Create `destination` (used once per external LMS)~~
   - Create dispatch (`courseId`, `destination`)
   - Download proxyScoFile
 
 ## Get course detail and proxy SCO files
-- CEMS Backend
-  - Endpoints
+- CEMS Backend ✔️
+  - Endpoints ✔️
     - GET company catalog ✔️ 
       - Already existed as GET
 ​/company​/{companyId}​/courses
-    - GET course detail (includes link to proxy SCO file if one exists) [CEMS-1671]
+    - GET course detail (includes link to proxy SCO file if one exists) ✔️ [CEMS-1671]
       - GET ​/company​/{companyId}​/course​/{courseId}
-    - GET approvals for course by `courseId` [CEMS-1701]
+    - GET approvals for course by `courseId` ✔️ [CEMS-1701]
       - GET​/accreditations?filter[courseId]={courseId}
 
-## SCORM Course Enrollment
-- CEMS Backend
-  - create a location to store Rustici registration links associated with `enrollmentId`'s [CEMS-1710]
-  - create Rustici registration [CEMS-1711]
-  - get and store registration link [CEMS-1712]
-- Library to interact with Rustici API **Carlos**
-  - create registration (`enrollmentId`, `learnerId`, `courseId`) [[CEMS-1713]
-  - get registration link [CEMS-1714]
 
 ## Consume SCORM Content
-- CEMS UI  **Phase2**
-  - Enrollments - Provide a link to Rustici for courses which have a SCO file
-  - Once clicked open the link in a new tap just like we do now
-  - Ensure no 'take exam' links exist for SCORM courses
-- CEMS Backend
-  - Endpoints
-    - Enrollment Detail - /enrollment/`enrollmentId` [CEMS-1703]
+- CEMS Backend ✔️
+  - Endpoints ✔️
+    - Enrollment Detail - /enrollment/`enrollmentId` ✔️ [CEMS-1703]
       - userId, companyId, learnerId, courseId, courseName, scormLink
       - certificate link (if completed)
       - this is needed so the UI knows where the rustici registration is and if it should hide the take exam option.
-    - POST
-​/enrollment​/{enrollmentId}​/reportToAsha [CEMS-1704]
+    - POST ​/enrollment​/{enrollmentId}​/reportToAsha ✔️ [CEMS-1704]
       - way for external lms users to request that we report their completion to asha
 
 ## Exam Completion
-- CEMS Backend **Carlos**
-  - Endpoint to receive xAPI messages from Rustici [CEMS-1715]
-  - Library to interpret xAPI messages [CEMS-1716]
-    - record exam questions and answers [CEMS-1717]
+- CEMS Backend  ✔️
+  - Endpoint to receive xAPI messages from Rustici ✔️ [CEMS-1715]
+  - Library to interpret xAPI messages ✔️ [CEMS-1716]
+    - record exam questions and answers ✔️ [CEMS-1717]
 
-## View Exam Results
-- CEMS UI
-  - Transcript **Phase2**
-    - for scorm courses we need the "view exam" link to point to the Rustici registration which will re-launch the scorm content and they should be able to see their exam
+
 
 # Certificates
-## TemplateManager
-- Database
+## Document Template System (DTS)
+- Database ✔️
   - table `template` ✔️ 
     - columns
       - templateId   - uuid
@@ -179,12 +159,12 @@
   - Document
     - construct(templateId, dataId)
     - asPdf()                    string filePath
-  - Certificate & DataTransferObject `DTO`
+  - Certificate & DataTransferObject `DTO` ✔️
     - define a Completion `DTO` and a way to store them ✔️  [CEMS-1569]
     - create library to build a `COC` from a `DTO` ✔️  [CEMS-1608]
 
-- Endpoints
-  - POST /docdata [CEMS-1686] ✔️ 
+- Endpoints ✔️
+  - POST /docdata ✔️ [CEMS-1686]
     - Request JSON
       - docType    string
       - dataKey     string
@@ -194,7 +174,7 @@
       - docType    string
       - dataKey     string
       - createdAt     ISO 8601 date-time
-  - GET  /docdata/{docType}/{dataKey}/history [CEMS-1687] ✔️ 
+  - GET  /docdata/{docType}/{dataKey}/history ✔️ [CEMS-1687]
     - Respose JSON
       - total         int
       - items (array of)
@@ -202,7 +182,7 @@
         - docType  string
         - dataKey   string
         - createdAt   ISO 8601 date-time
-  - GET  /render [CEMS-1688] w8 ✔️ 
+  - GET  /render ✔️ [CEMS-1688]
     - Request Query
       - templateId    uuid
       - docType  string
@@ -212,25 +192,24 @@
       - dataKey     string
     - Response
       - dataId.pdf  application/pdf
-- Misc
+- Misc ✔️
   - map handlebars placeholders to `DTO` properties ✔️  [CEMS-1622]
-  - convert existing certificate template's into handlebars notation [CEMS-1672], [CEMS-1681] w6
+  - convert existing certificate template's into handlebars notation ✔️ [CEMS-1672], [CEMS-1681]
 
 ## CEMS - Download Certificate of Completion (CoC)
-
-  - Lib
-    - DocumentTemplateSystem (DTS)
+  - Lib ✔️
+    - DocumentTemplateSystem (DTS) ✔️
       - hasCompletionData(enrollmentId)
         - count(docData version history) > 0
           - GET DTS/docdata/type/key/history
-      - recordCompletion(enrollmentId, completionDTO) [CEMS-1689] w7
+      - recordCompletion(enrollmentId, completionDTO) ✔️ [CEMS-1689]
         - POST DTS/docdata
       - buildCertificate(template, enrollmentId)
         - GET  DTS/render
-    - CompletionDto
-      - buildFromEnrollment(eid) [CEMS-1650] w6
-  - Endpoint
-    - GET /enrollment/{enrollmentId}/certificate [CEMS-1692] w9
+    - CompletionDto ✔️
+      - buildFromEnrollment(eid) ✔️ [CEMS-1650] w6
+  - Endpoint ✔️
+    - GET /enrollment/{enrollmentId}/certificate ✔️ [CEMS-1692]
       - DTS::hasCompletion(enrollmentId)
         - else
           - dto=CompletionDto::buildFromEnrollment(enrollmentId)
@@ -241,8 +220,35 @@
 ## Phase 2
 - CEMS Backend
   - Extract exam answer text from sco files [CEMS-1651]
-  - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM) [CEMS-1690] **phase2**
-  - create a migration to transfer past completion data to `DTS` [CEMS-1691] **phase2**
+  - Add a trigger to create and push the `DTO` on successful course completion (both SCORM and non-SCORM) [CEMS-1690] 
+  - create a migration to transfer past completion data to `DTS` [CEMS-1691] 
+  - Endpoints
+  - - GET endpoint to fetch details of the last generation request. 
+  - Proxy SCO Generation Requests
+    - database table for company proxyScoFile generation requests [CEMS-1706]
+    - database table to track progress of generation requests (requested, started, complete) with timestamp [CEMS-1707]
+    - repository method to add a new proxyScoFile generation request [CEMS-1708]
+    - repository method to insert a new status for a specific request (insert only, no update) [CEMS-1709]
+  
+- SCORM Course Enrollment
+  - CEMS Backend
+    - create a location to store Rustici registration links associated with `enrollmentId`'s [CEMS-1710]
+    - create Rustici registration [CEMS-1711]
+    - get and store registration link [CEMS-1712]
+  - Library to interact with Rustici API **Carlos**
+    - create registration (`enrollmentId`, `learnerId`, `courseId`) [[CEMS-1713]
+    - get registration link [CEMS-1714]
+
+- Consume SCORM Content
+  - CEMS UI  
+    - Enrollments - Provide a link to Rustici for courses which have a SCO file
+    - Once clicked open the link in a new tap just like we do now
+    - Ensure no 'take exam' links exist for SCORM courses
+
+- View Exam Results
+  - CEMS UI
+    - Transcript 
+      - for scorm courses we need the "view exam" link to point to the Rustici registration which will re-launch the scorm content and they should be able to see their exam
 
 - WYSIWYG template builder
 
